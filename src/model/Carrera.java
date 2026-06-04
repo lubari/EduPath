@@ -6,12 +6,16 @@ public class Carrera {
     private String nombre;
     private PlanEstudio plan;
 
-    public void getPlanEstudio(PlanEstudio plan) {
-        // Implementar lógica para obtener el plan de estudio
-    }
-
     public int getTotalMaterias() {
         // Implementar lógica para obtener el total de materias
         return 0;
+    }
+
+    public PlanEstudio getPlanEstudio() {
+        return plan;
+    }
+
+    public void setPlanEstudio(PlanEstudio plan) {
+        this.plan = plan;
     }
 }

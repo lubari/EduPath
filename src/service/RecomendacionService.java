@@ -1,6 +1,7 @@
 package service;
 
 import model.Alumno;
+import model.Recomendacion;
 
 public class RecomendacionService {
     private EstrategiaFactory estrategiaFactory;

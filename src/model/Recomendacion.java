@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Recomendacion {
     private List<Materia> materias;
+    private int aniosCursados;
     private LocalDate fechaEgresoEstimada;
 
     public List<Materia> getMaterias() {

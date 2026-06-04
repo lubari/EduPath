@@ -8,6 +8,13 @@ public class RegistroAcademico {
     private int nota;
     private IEstado estado;
 
+    public RegistroAcademico(Materia materia, String cuatrimestre, int nota, IEstado estado) {
+        this.materia = materia;
+        this.cuatrimestre = cuatrimestre;
+        this.nota = nota;
+        this.estado = estado;
+    }
+
     public boolean estaAprobada() {
         // Implementar lógica para verificar si la materia está aprobada
         return false;
