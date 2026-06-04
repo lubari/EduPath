@@ -15,6 +15,10 @@ public class PlanController {
     private GeneradorPDF generador;
     private AlertaService alertaService;
 
+    public void actualizarDatos(String legajo){
+        return;
+    }
+
     public Recomendacion simularCarrera(String legajo, String tipo) {
         // Implementar lógica para simular la carrera del alumno
         return null;
