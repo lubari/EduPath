@@ -1,6 +1,6 @@
 package model;
 
-import interfaces.IEstado;
+import state.IEstado;
 
 public class RegistroAcademico {
     private Materia materia;

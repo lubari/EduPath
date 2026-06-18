@@ -1,6 +1,6 @@
 package adapter;
 
-import interfaces.IAlumnoRepository;
+import model.IAlumnoRepository;
 import model.Alumno;
 import model.RegistroAcademico;
 import service.SistemaUadeAPI;
@@ -13,7 +13,8 @@ public class UADEAdapter implements IAlumnoRepository {
     @Override
     public Alumno buscarPorLegajo(String legajo) {
         // Lógica para adaptar la respuesta del sistema UADE al formato de Alumno
-        return null;
+        var datosAlumnoAPI = cliente.obtenerDatosEstudiante(legajo);
+        return MapToDomain(datosAlumnoAPI);
     }
 
     @Override

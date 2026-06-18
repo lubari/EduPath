@@ -1,4 +1,4 @@
-package interfaces;
+package strategy;
 
 import model.Alumno;
 import model.PlanEstudio;

@@ -1,7 +1,4 @@
-package interfaces;
-
-import model.Alumno;
-import model.RegistroAcademico;
+package model;
 
 import java.util.List;
 

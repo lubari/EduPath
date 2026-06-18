@@ -1,6 +1,7 @@
 package controller;
 
-import interfaces.IAlumnoRepository;
+import model.Alumno;
+import model.IAlumnoRepository;
 import model.Alerta;
 import model.Recomendacion;
 import service.AlertaService;
@@ -15,26 +16,52 @@ public class PlanController {
     private GeneradorPDF generador;
     private AlertaService alertaService;
 
+    public PlanController(RecomendacionService service, IAlumnoRepository repo, GeneradorPDF generador, AlertaService alertaService) {
+        this.service = service;
+        this.repo = repo;
+        this.generador = generador;
+        this.alertaService = alertaService;
+    }
+
+
     public void actualizarDatos(String legajo){
-        return;
+        if(legajo == null || legajo.isEmpty()) return;
+
+        Alumno alumno = repo.buscarPorLegajo(legajo);
+        service.sincronizarDatos(legajo);
     }
 
     public Recomendacion simularCarrera(String legajo, String tipo) {
-        // Implementar lógica para simular la carrera del alumno
-        return null;
+        if(legajo == null || legajo.isEmpty()) return null;
+        Alumno alumno = repo.buscarPorLegajo(legajo);
+
+        if (alumno == null) return null;
+
+        return service.generarPlan(alumno);
     }
 
     public String getEstadisticas(String legajo) {
-        // Implementar lógica para obtener estadísticas del alumno
-        return "";
+        if (legajo == null) return "";
+        Alumno alumno = repo.buscarPorLegajo(legajo);
+
+        if (alumno == null) return "Alumno no encontrado";
+
+        return "Progreso: " + alumno.getPorcentajeAvance() + "% | Materias Aprobadas: " + alumno.getCantidadMateriasAprobadas();
     }
 
     public void exportarPDF(String legajo) {
-        // Implementar lógica para exportar el plan de estudio en formato PDF
+        if (legajo == null) return;
+        Alumno alumno = repo.buscarPorLegajo(legajo);
+        Recomendacion recomendacion= service.generarPlan(alumno);
+        if (alumno != null){
+            generador.generarPDF(recomendacion);
+        }
     }
 
     public List<Alerta> getAlertas(String legajo) {
-        // Implementar lógica para obtener las alertas del alumno
-        return null;
+        if (legajo == null) return null;
+        Alumno alumno = repo.buscarPorLegajo(legajo);
+        if (alumno == null) return null;
+        return alertaService.getAlertas(alumno);
     }
 }

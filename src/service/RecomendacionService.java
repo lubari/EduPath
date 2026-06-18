@@ -1,6 +1,6 @@
 package service;
 
-import interfaces.IAlumnoRepository;
+import model.IAlumnoRepository;
 import model.Alumno;
 import model.Estadisticas;
 import model.Materia;

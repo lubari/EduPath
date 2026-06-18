@@ -1,7 +1,5 @@
 package state;
 
-import interfaces.IEstado;
-
 public class EstadoCursando implements IEstado {
     @Override
     public String getNombre() {

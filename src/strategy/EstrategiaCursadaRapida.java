@@ -1,6 +1,5 @@
 package strategy;
 
-import interfaces.IEstrategiaRecomendacion;
 import model.Alumno;
 import model.PlanEstudio;
 import model.Recomendacion;

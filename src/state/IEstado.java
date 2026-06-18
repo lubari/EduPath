@@ -1,4 +1,4 @@
-package interfaces;
+package state;
 
 public interface IEstado {
     boolean estaAprobada();
