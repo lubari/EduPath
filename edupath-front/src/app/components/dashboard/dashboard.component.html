@@ -2,11 +2,10 @@
   <app-sidebar [alumno]="alumno" [estadisticas]="estadisticas"></app-sidebar>
 
   <main class="main">
-    <!-- Panel principal -->
     <section class="card panel-header">
       <div>
         <p class="eyebrow">Panel principal</p>
-        <h1>Bienvenido, {{ alumno?.nombre || '...' }}</h1>
+        <h1>Bienvenido, {{ alumno ? alumno.nombre : '...' }}</h1>
         <p class="desc">
           Revisión rápida del progreso académico, materias disponibles, alertas y simulación de cursada.
         </p>
@@ -23,7 +22,6 @@
       </div>
     </section>
 
-    <!-- Métricas -->
     <section class="metrics" *ngIf="estadisticas as e">
       <div class="metric-card">
         <div class="metric-top">
@@ -62,7 +60,6 @@
       </div>
     </section>
 
-    <!-- Contenido principal -->
     <section class="content-grid">
       <app-materias-disponibles [materias]="materias"></app-materias-disponibles>
 
@@ -75,7 +72,6 @@
       ></app-simulacion-carrera>
     </section>
 
-    <!-- Alertas -->
     <section class="card" *ngIf="alertas.length">
       <h2><i class="ti ti-bell"></i> Alertas</h2>
       <div class="alertas">
@@ -86,7 +82,6 @@
             'ti-info-circle': alerta.tipo === 'info'
           }"></i>
           <div>
-            <p class="alerta-titulo">{{ alerta.titulo }}</p>
             <p class="alerta-mensaje">{{ alerta.mensaje }}</p>
           </div>
         </div>

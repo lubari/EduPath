@@ -3,8 +3,8 @@ export type EstadoMateria = 'aprobada' | 'cursando' | 'desaprobada' | 'disponibl
 export interface Materia {
   codigo: string;
   nombre: string;
-  anio: number;
   cargaHoraria: number;
+  correlativas: Materia[];
+  anio: number;
   estado: EstadoMateria;
-  correlativas: string[]; // códigos de materias correlativas
 }

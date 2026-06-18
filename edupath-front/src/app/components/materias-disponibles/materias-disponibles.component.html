@@ -6,12 +6,7 @@
     </div>
     <div class="search">
       <i class="ti ti-search"></i>
-      <input
-        type="text"
-        placeholder="Buscar materia..."
-        [(ngModel)]="busqueda"
-        (ngModelChange)="filtrar()"
-      />
+      <input type="text" placeholder="Buscar materia..." [(ngModel)]="busqueda" (ngModelChange)="filtrar()" />
     </div>
   </div>
 
@@ -31,7 +26,6 @@
         Ver detalle <i class="ti ti-chevron-right"></i>
       </button>
     </div>
-
     <p class="empty" *ngIf="materiasFiltradas.length === 0">No se encontraron materias.</p>
   </div>
 </section>

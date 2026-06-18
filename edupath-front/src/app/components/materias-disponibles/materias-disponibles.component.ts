@@ -4,10 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { Materia } from '../../models/materia.model';
 
 const ESTADO_LABELS: Record<string, string> = {
-  disponible: 'Disponible',
-  proxima: 'Próxima',
-  cursando: 'Cursando',
-  aprobada: 'Aprobada',
+  disponible:  'Disponible',
+  proxima:     'Próxima',
+  cursando:    'Cursando',
+  aprobada:    'Aprobada',
   desaprobada: 'Desaprobada',
 };
 
@@ -41,7 +41,6 @@ export class MateriasDisponiblesComponent implements OnChanges {
   }
 
   verDetalle(materia: Materia): void {
-    // Placeholder: aquí se podría navegar a una vista de detalle o abrir un modal
     console.log('Ver detalle de', materia.nombre);
   }
 }

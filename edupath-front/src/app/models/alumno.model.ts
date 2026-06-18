@@ -1,16 +1,15 @@
+import { Carrera } from './carrera.model';
+import { RegistroAcademico } from './registro-academico.model';
 import { Materia } from './materia.model';
-
-export interface RegistroAcademico {
-  materia: Materia;
-  cuatrimestre: string;
-  nota: number;
-  estado: 'Aprobada' | 'Cursando' | 'Desaprobada';
-}
 
 export interface Alumno {
   legajo: string;
   nombre: string;
   promedio: number;
-  carrera: string;
+  carrera: Carrera;
   registros: RegistroAcademico[];
+  materiasAprobadas: Materia[];
+  materiasDisponibles: Materia[];
+  porcentajeAvance: number;
+  cantidadAprobadas: number;
 }
