@@ -1,0 +1,96 @@
+<div class="layout">
+  <app-sidebar [alumno]="alumno" [estadisticas]="estadisticas"></app-sidebar>
+
+  <main class="main">
+    <!-- Panel principal -->
+    <section class="card panel-header">
+      <div>
+        <p class="eyebrow">Panel principal</p>
+        <h1>Bienvenido, {{ alumno?.nombre || '...' }}</h1>
+        <p class="desc">
+          Revisión rápida del progreso académico, materias disponibles, alertas y simulación de cursada.
+        </p>
+      </div>
+      <div class="actions">
+        <button class="btn-secondary" (click)="exportarPDF()" [disabled]="exportando">
+          <i class="ti ti-download"></i>
+          {{ exportando ? 'Exportando...' : 'Exportar PDF' }}
+        </button>
+        <button class="btn-primary" (click)="generarSimulacion()" [disabled]="loadingSimulacion">
+          <i class="ti ti-sparkles"></i>
+          Generar simulación
+        </button>
+      </div>
+    </section>
+
+    <!-- Métricas -->
+    <section class="metrics" *ngIf="estadisticas as e">
+      <div class="metric-card">
+        <div class="metric-top">
+          <p class="metric-label">Promedio general</p>
+          <span class="metric-icon"><i class="ti ti-trending-up"></i></span>
+        </div>
+        <p class="metric-value">{{ e.promedio }}</p>
+        <p class="metric-foot">Promedio acumulado</p>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-top">
+          <p class="metric-label">Materias aprobadas</p>
+          <span class="metric-icon"><i class="ti ti-circle-check"></i></span>
+        </div>
+        <p class="metric-value">{{ e.aprobadas }}</p>
+        <p class="metric-foot">de {{ e.totalMaterias }} totales</p>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-top">
+          <p class="metric-label">Egreso estimado</p>
+          <span class="metric-icon"><i class="ti ti-calendar"></i></span>
+        </div>
+        <p class="metric-value metric-value-sm">{{ e.fechaEgresoEstimada | date: 'MMMM yyyy' }}</p>
+        <p class="metric-foot">Estrategia: {{ e.estrategia === 'rapida' ? 'Cursada rápida' : e.estrategia === 'minima' ? 'Cursada mínima' : 'Materias por año' }}</p>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-top">
+          <p class="metric-label">Alertas activas</p>
+          <span class="metric-icon"><i class="ti ti-bell"></i></span>
+        </div>
+        <p class="metric-value">{{ alertas.length }}</p>
+        <p class="metric-foot">Revisar antes de inscribirte</p>
+      </div>
+    </section>
+
+    <!-- Contenido principal -->
+    <section class="content-grid">
+      <app-materias-disponibles [materias]="materias"></app-materias-disponibles>
+
+      <app-simulacion-carrera
+        [opciones]="opcionesEstrategia"
+        [seleccionada]="estrategiaSeleccionada"
+        [recomendacion]="recomendacion"
+        [loading]="loadingSimulacion"
+        (seleccionar)="onSeleccionarEstrategia($event)"
+      ></app-simulacion-carrera>
+    </section>
+
+    <!-- Alertas -->
+    <section class="card" *ngIf="alertas.length">
+      <h2><i class="ti ti-bell"></i> Alertas</h2>
+      <div class="alertas">
+        <div class="alerta" *ngFor="let alerta of alertas" [ngClass]="'alerta-' + alerta.tipo">
+          <i class="ti" [ngClass]="{
+            'ti-alert-triangle': alerta.tipo === 'warning',
+            'ti-alert-circle': alerta.tipo === 'danger',
+            'ti-info-circle': alerta.tipo === 'info'
+          }"></i>
+          <div>
+            <p class="alerta-titulo">{{ alerta.titulo }}</p>
+            <p class="alerta-mensaje">{{ alerta.mensaje }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>

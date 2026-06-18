@@ -1,0 +1,140 @@
+.card {
+  background: var(--color-background-primary);
+  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-lg);
+  padding: 1.5rem;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.card-header h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 4px;
+}
+
+.card-header h2 .ti {
+  font-size: 18px;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.search {
+  position: relative;
+}
+
+.search .ti {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-tertiary);
+  font-size: 16px;
+}
+
+.search input {
+  padding-left: 36px;
+  width: 220px;
+}
+
+.materia-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.materia-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 0.5px solid var(--color-border-tertiary);
+}
+
+.materia-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.materia-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.materia-nombre {
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.materia-meta {
+  margin: 0;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+.badge {
+  font-size: 12px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-weight: 500;
+}
+
+.badge-disponible {
+  background: var(--color-background-success);
+  color: var(--color-text-success);
+}
+
+.badge-proxima {
+  background: var(--color-background-warning);
+  color: var(--color-text-warning);
+}
+
+.badge-cursando,
+.badge-aprobada,
+.badge-desaprobada {
+  background: var(--color-background-secondary);
+  color: var(--color-text-secondary);
+}
+
+.btn-detalle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--color-text-primary);
+  color: var(--color-background-primary);
+  border: none;
+  border-radius: var(--border-radius-md);
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-detalle:hover {
+  opacity: 0.9;
+}
+
+.btn-detalle .ti {
+  font-size: 14px;
+}
+
+.empty {
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  padding: 1rem 0;
+}

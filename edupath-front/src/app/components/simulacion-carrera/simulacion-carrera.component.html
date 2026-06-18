@@ -1,0 +1,41 @@
+<section class="card">
+  <h2><i class="ti ti-sparkles"></i> Simulación de carrera</h2>
+  <p class="subtitle">Elegí una estrategia y mirá el impacto en el egreso.</p>
+
+  <div class="opciones">
+    <button
+      class="opcion"
+      *ngFor="let opcion of opciones"
+      [class.selected]="opcion.tipo === seleccionada"
+      (click)="onSeleccionar(opcion.tipo)"
+    >
+      <div class="opcion-header">
+        <span class="opcion-nombre">{{ opcion.nombre }}</span>
+        <span class="badge-riesgo" [ngClass]="riesgoClass(opcion.riesgo)">{{ opcion.riesgo }}</span>
+        <span class="opcion-egreso">
+          EGRESO
+          <strong>{{ opcion.fechaEgresoEstimada | date: 'MMMM yyyy' }}</strong>
+        </span>
+      </div>
+      <p class="opcion-desc">{{ opcion.descripcion }}</p>
+    </button>
+  </div>
+
+  <div class="resultado">
+    <h3><i class="ti ti-report-analytics"></i> Resultado estimado</h3>
+
+    <p class="resultado-intro" *ngIf="!loading">
+      Con <strong>{{ nombreEstrategiaSeleccionada }}</strong>, el sistema sugiere:
+    </p>
+    <p class="resultado-intro" *ngIf="loading">Calculando recomendación...</p>
+
+    <ul class="materias-sugeridas" *ngIf="!loading && recomendacion">
+      <li *ngFor="let materia of recomendacion.materias">
+        <i class="ti ti-circle-check"></i> {{ materia.nombre }}
+      </li>
+      <li *ngIf="recomendacion.materias.length === 0" class="empty">
+        No hay materias sugeridas para esta estrategia.
+      </li>
+    </ul>
+  </div>
+</section>

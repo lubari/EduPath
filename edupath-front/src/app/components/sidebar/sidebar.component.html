@@ -1,0 +1,40 @@
+<aside class="sidebar">
+  <div class="brand">
+    <div class="brand-icon">
+      <i class="ti ti-school"></i>
+    </div>
+    <div>
+      <p class="brand-subtitle">Sistema académico</p>
+      <p class="brand-title">EduPath</p>
+    </div>
+  </div>
+
+  <div class="alumno-card" *ngIf="alumno">
+    <p class="alumno-label">Alumno</p>
+    <p class="alumno-nombre">{{ alumno.nombre }}</p>
+    <p class="alumno-meta">Legajo {{ alumno.legajo }}</p>
+    <p class="alumno-meta">{{ alumno.carrera }}</p>
+  </div>
+
+  <nav class="menu">
+    <button class="menu-item" *ngFor="let item of menuItems" [class.active]="item.label === 'Dashboard'">
+      <span class="menu-item-left">
+        <i class="ti" [ngClass]="'ti-' + item.icon"></i>
+        {{ item.label }}
+      </span>
+      <i class="ti ti-chevron-right"></i>
+    </button>
+  </nav>
+
+  <div class="avance-card" *ngIf="estadisticas as e">
+    <p class="avance-label">
+      <i class="ti ti-trending-up"></i>
+      Avance de carrera
+    </p>
+    <p class="avance-pct">{{ e.porcentaje }}%</p>
+    <p class="avance-detalle">{{ e.aprobadas }} de {{ e.totalMaterias }} materias aprobadas</p>
+    <div class="avance-bar">
+      <div class="avance-bar-fill" [style.width.%]="e.porcentaje"></div>
+    </div>
+  </div>
+</aside>

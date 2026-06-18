@@ -1,0 +1,37 @@
+<section class="card">
+  <div class="card-header">
+    <div>
+      <h2><i class="ti ti-book-2"></i> Materias disponibles</h2>
+      <p class="subtitle">Filtrá y revisá qué materias podés cursar ahora mismo.</p>
+    </div>
+    <div class="search">
+      <i class="ti ti-search"></i>
+      <input
+        type="text"
+        placeholder="Buscar materia..."
+        [(ngModel)]="busqueda"
+        (ngModelChange)="filtrar()"
+      />
+    </div>
+  </div>
+
+  <div class="materia-list">
+    <div class="materia-row" *ngFor="let materia of materiasFiltradas">
+      <div class="materia-info">
+        <div class="materia-title">
+          <span class="materia-nombre">{{ materia.nombre }}</span>
+          <span class="badge" [ngClass]="'badge-' + materia.estado">{{ estadoLabel(materia.estado) }}</span>
+        </div>
+        <p class="materia-meta">
+          {{ materia.codigo }} · Año {{ materia.anio }} · {{ materia.cargaHoraria }} hs
+          · {{ materia.correlativas.length }} correlativa{{ materia.correlativas.length === 1 ? '' : 's' }}
+        </p>
+      </div>
+      <button class="btn-detalle" (click)="verDetalle(materia)">
+        Ver detalle <i class="ti ti-chevron-right"></i>
+      </button>
+    </div>
+
+    <p class="empty" *ngIf="materiasFiltradas.length === 0">No se encontraron materias.</p>
+  </div>
+</section>
